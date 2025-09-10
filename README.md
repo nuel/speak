@@ -1,5 +1,7 @@
 # speak
 
+![speak](https://github.com/user-attachments/assets/836e8532-f807-4101-8ece-9b0fab84cfd3)
+
 A small library for making text appear as if spoken.
 
 It types text one character at a time, knows how to handle formatting tags -- and pauses at commas and other punctuation.
