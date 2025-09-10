@@ -21,6 +21,7 @@ const element = document.querySelector('.whateverElementYouWantToUse');
 // Pass it to speak
 speak(element);
 ```
+_____________
 
 ### Skipping
 
@@ -29,4 +30,19 @@ Calling `skip` will skip to the end of the current text.
 ```javascript
 // Skip to the end
 skip();
+```
+
+_____________
+
+### Controlling speed
+
+Using the data attribute `data-speed`:
+```html
+<div class="dialog" data-speed=".3">This line will be spoken s l o w l y.</div>
+```
+
+Setting the current speed in your function call:
+```javascript
+// This will set the current speaking speed at 50%
+speak(element, .5);
 ```

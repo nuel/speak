@@ -5,9 +5,12 @@ const speakState = {
   currentLine: [],
   currentBalloon: null,
   speakIndex: 0,
+  speed: 1,
 }
 
-const speak = balloon => {
+const speak = (balloon, speed) => {
+  if (speed) speakState.speed = speed;
+  
   if (speakState.currentBalloon === balloon) return;
 
   if (balloon.innerHTML) {
@@ -19,7 +22,7 @@ const speak = balloon => {
     speakState.speakIndex ++;
     speakState.currentBalloon.innerHTML = speakState.currentLine.slice(0, speakState.speakIndex).join('');
 
-    const delay = cadence(speakState.currentLine[speakState.speakIndex - 1]);
+    const delay = cadence(speakState.currentLine[speakState.speakIndex - 1], speakState.currentBalloon.dataset.speed || speakState.speed);
     setTimeout(() => requestAnimationFrame(speak), delay);
   } else {
     doneTalking();
@@ -51,15 +54,15 @@ const tokenize = string => {
 // Determine delay based on punctuation
 const REST = /(?<!<)^[.\/#!?$%\^&\*;:\-)]/;
 const COMMA = /[,]/;
-const cadence = char => {
+const cadence = (char, speed) => {
   if (REST.test(char)) {
-    return 500;
+    return 500 / speed;
   }
   if (COMMA.test(char)) {
-    return 150;
+    return 150 / speed;
   }
 
-  return 10;
+  return 10 / speed;
 }
 
 // Skip: fill out line and interupt speak() loop
