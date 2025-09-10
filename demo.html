@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>speak.js demo</title>
+  <style>
+    html, body { height: 100%; margin: 0 }
+    body { display: flex; align-items: center; justify-content: center}
+    main { font-size: 1.2em; padding: 1em; width: 90%; max-width: 50em}
+    #dialogbox { background-color: #ffffee; border: 3px dotted #aaa; padding: 1em; margin: 1em 0}
+  </style>
+</head>
+<body>
+  <main>
+    <h1>speak</h1>
+    <div id="dialogbox" contenteditable>
+      <p>This is a demo of <em>speak</em>, a small library for making text appear as if spoken.</p>
+      <p>It types text one character at a time, knows how to handle <strong>formatting tags</strong> -- and pauses at commas and other punctuation.</p>
+      <p>Use it for <em>visual novels</em>, <em>twine games</em>, anything you can think of!</p>
+      <p>Try it out: edit this text, then click "speak".</p>
+      <p>Skipping is also supported, for longer texts.</p>
+    </div>
+    <button onclick="demo()">Speak</button>
+    <button onclick="skip()">Skip ></button>
+  </main>
+
+  <script src="speak.js"></script>
+  <script>
+    function demo() {
+      speak(dialogbox);
+    }
+  </script>
+</body>
+</html>
